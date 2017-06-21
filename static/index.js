@@ -3,6 +3,9 @@ window.onload = function(){
 	// 主机名
 	var hostname = window.location.hostname;
 
+	// 端口号
+	var port = window.location.port;
+
 	// 要访问的文件夹的路径
 	var pathname =  decodeURI(window.location.pathname);
 
@@ -17,7 +20,7 @@ window.onload = function(){
 
 	$.ajax({
 		type: 'GET',
-		url: 'http://' + hostname + ':8080/currentuser/',
+		url: 'http://' + hostname + ':' + port + '/currentuser/',
 		dataType: 'text',
 		success: function(data){
 			user_area.innerHTML = "当前用户： " + data;
@@ -46,7 +49,7 @@ window.onload = function(){
 		$.ajax({
 			type: 'GET',
 			// async: false, 
-			url: 'http://' + hostname + ':8080/list/' + path,
+			url: 'http://' + hostname + ':' + port + '/list/' + path,
 			dataType: 'json',
 			success: function(data){
 				// 将得到的文件（夹）列表展示出来

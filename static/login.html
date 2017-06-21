@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, 
+  maximum-scale=1, 
+  user-scalable=no">
+  <title>文件共享</title>
+</head>
+<body>
+	<div class='header'>
+  	<h1>文件共享工具</h1>
+  </div>
+  <div class="login-group">
+	  <form action='/login/' method='post'>
+	  	<div class="input-group">
+		    <input type="text" name="name" placeholder="用户名"/>
+		    <input class="password" type="password" name="password" placeholder="密码"/>
+	  	</div>
+	    <input class="submit-btn" type="submit" value="登录" />
+	  </form>
+	  <div class="info">
+	  	
+	  </div>
+	</div>
+	<div class='footer'>
+		<span>© 2017 </span>
+	</div>
+
+  <style type="text/css">
+  	body {
+  		height: 100%;
+  		color: #555;
+	    font-size: 15px;
+	    line-height: 1.7;
+	    font-family: 'Helvetica Neue',Helvetica,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',Arial,sans-serif;
+	    background: #f7fafc;
+	    -webkit-font-smoothing: subpixel-antialiased;
+  	}
+  	.header {
+  		width: 100%;
+  		text-align: center;
+  		margin-top: 60px;
+  		margin-bottom: 40px;
+  	}
+
+  	.header h1 {
+  		color: #0f88eb;
+  		font-weight: normal;
+  	}
+
+  	.login-group {
+  		width: 300px;
+  		margin: auto;
+  		font-size: 14px;
+  	}
+  	.input-group input:focus {
+    	outline: 0;
+  	}
+  	.input-group input{
+  		padding: 1em .8em;
+    	width: 100%;
+    	box-sizing: border-box;
+    	color: #555;
+    	border: 0;
+	    border-radius: 0;
+	    box-shadow: none;
+	    background: #fff;
+  	}
+  	.input-group input.password{
+    	border-top: 1px solid #e8e8e8;
+  	}
+  	.input-group {
+  		padding: 1px 0;
+	    border: 1px solid #d5d5d5;
+	    border-radius: 3px;
+  	}
+  	input.submit-btn {
+  		margin-top: 18px;
+  		background: #0f88eb;
+	    box-shadow: none;
+	    border: 0;
+	    border-radius: 3px;
+	    line-height: 41px;
+	    color: #fff;
+	    display: block;
+	    padding: 0;
+	    width: 100%;
+		  font-size: 16px;
+	    outline: 0;
+	    cursor: pointer;
+  	}
+  	input.submit-btn:hover {
+  		background: #55abed;
+  	}
+
+  	.info {
+  		margin-top: 28px;
+  		text-align: center;
+  		color: #555;
+  	}
+  	.footer {
+			height: 50px;
+			clear:both;
+  		font-size: 12px;
+	    line-height: 21px;
+	    text-align: center;
+	    color: #aebdc9;
+  	}
+  </style>
+</body>
+</html>

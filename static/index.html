@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, 
+	initial-scale=1, 
+	maximum-scale=1, 
+	user-scalable=no">
+	<title>文件共享</title>
+	<link rel="stylesheet" type="text/css" href="/static/lib_3rd/bootstrap-3.3.7/css/bootstrap.min.css">
+	<script src="/static/lib_3rd/jquery-3.0.0/jquery-3.0.0.min.js"></script>
+	<script src="/static/lib_3rd/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+	<script src="/static/index.js"></script>
+	<style type="text/css">
+		#topuser{
+			margin-top: 20px;
+			float: right;
+		}
+		#toppath{
+			margin-top: 20px;
+		}
+		#patharea{
+			font-size: 20px;
+		}
+		#filelist{
+			font-size: 20px;
+			padding-left: 0px;
+			list-style: none;
+
+		}
+		#upload{
+
+		}
+		.upditem{
+			font-size: 10px;
+			margin-top: 10px;
+			display: inline-block;
+		}
+	</style>
+</head>
+<body class="container-fluid">
+	<div id="topuser">
+		<span id="currentuser">当前用户：</span>
+		<button onclick="logout()">退出</button>
+	</div>
+	<!-- <hr> -->
+	<div id="toppath">
+		<span id="patharea">当前路径：</span>
+	</div>
+	<hr>
+	<div id="uploadarea">
+		<form id="upload" method="POST" enctype="multipart/form-data" action="">
+			<div class="upditem">
+				<span>文件上传:</span>
+			</div>
+			<div class="upditem">
+				<input type="file" name="fileToUpLoad">
+			</div>
+			<div class="upditem">
+				<input type="submit" name="" value="上传">
+			</div>
+		</form>
+	</div>
+	<hr>
+	<div id="main">
+		<ul id="filelist">
+			
+		</ul>
+	</div>
+</body>
+</html>

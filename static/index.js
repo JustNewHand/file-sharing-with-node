@@ -9,6 +9,8 @@ window.onload = function(){
 	// 要访问的文件夹的路径
 	var pathname =  decodeURI(window.location.pathname);
 
+	console.log(pathname);
+
 	// 页面上的文件列表容器
 	var file_list = $('#filelist');
 
@@ -30,6 +32,8 @@ window.onload = function(){
 	// 更新文件列表
 	// 拿到path下的所有文件（夹）的列表，并更新显示区域
 	var upd_fl = function(path){
+
+		// 更新patharea
 		var path_arr = path.split('/');
 		var new_path = '/';
 		var show_path = "<a href='/'>/</a>";
@@ -41,7 +45,6 @@ window.onload = function(){
 
 		// 清空原先的列表
 		for(var j=0; j<file_list.children('li').length; j++){
-			// console.log(file_list.children)
 			file_list.children('li').remove(0);
 		}
 
@@ -49,7 +52,7 @@ window.onload = function(){
 		$.ajax({
 			type: 'GET',
 			// async: false, 
-			url: 'http://' + hostname + ':' + port + '/list/' + path,
+			url: 'http://' + hostname + ':' + port + '/list' + path,
 			dataType: 'json',
 			success: function(data){
 				// 将得到的文件（夹）列表展示出来

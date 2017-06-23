@@ -1,5 +1,7 @@
 var express = require('express');
 var fs = require('fs');
+// 使用multiparty中间件实现上传
+var multiparty = require('multiparty');
 
 // 共享文件夹根目录
 var root = require('./myroot').root;
@@ -7,11 +9,6 @@ if(!fs.existsSync(root)){
     // console.log('here');
     fs.mkdirSync(root);
 }
-
-// 配置上传路径
-var upload = multer({
-    dest: root
-})
 
 var INDEX_PAGE = 'static/index.html';
 var LOGIN_PAGE = 'static/login.html';
@@ -50,8 +47,6 @@ app.get('/list/*',function(req,res){
 });
 
 app.get('/*',function(req,res){
-    // res.send('Hello World!');
-    
     var oURL = decodeURI(req.originalUrl);
     if (oURL.slice(-1) == '/'){
         res.sendfile(INDEX_PAGE);
@@ -60,12 +55,35 @@ app.get('/*',function(req,res){
     }
 });
 
-app.post('/*',upload.single('fileToUpLoad'),function(req,res){
-    console.log(req.originalUrl);
+app.post('/*',function(req,res,next){
     var oURL = decodeURI(req.originalUrl);
     var path = root + oURL.slice(1,oURL.length);
 
-    // TODO 上传
+    var form = new multiparty.Form({
+        uploadDir: path
+    });
+    form.parse(req, function(err,fields,files){
+        var filesTmp = JSON.stringify(files,null,2);
+        if(err){
+            console.log('parse error:'+err);
+        }else{
+            console.log('parse files:'+filesTmp);
+            console.log('files:', files);
+            var inputFile = files['fileToUpLoad'][0];
+            var uploadPath = inputFile.path;
+            var dstPath = path + inputFile.originalFilename;
+            console.log('path',uploadPath,dstPath);
+            fs.rename(uploadPath,dstPath,function(err){
+                if(err){
+                    console.log('rename error:'+err);
+                }else{
+                    console.log('rename ok');
+                }
+            });
+            // res.redirect(path);
+            res.sendfile(INDEX_PAGE);
+        }
+    })
     
 });
 
